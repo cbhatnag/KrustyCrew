@@ -8,7 +8,6 @@ from flask import render_template
 from flask import request
 from flask import redirect, url_for
 
-
 app = Flask(__name__)  # create an app
 
 notes = {1: {'title': 'First note', 'text': 'This is my first note', 'date': '10-1-2020'},
