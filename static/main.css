@@ -1,10 +1,23 @@
 body {
     padding: 30px 30px;
+    background: black;
+    align-items: center;
     }
 h1{
-    color:green;
+    color:white;
 }
+
 h2{
     color:gold;
-    background:green;
+}
+
+nav {
+    color: black;
+    background-color: lightgray;
+}
+
+img {
+    margin-right: auto;
+    margin-left: auto;
+    vertical-align: middle;
 }
