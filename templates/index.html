@@ -3,17 +3,28 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="TakeNote App">
-        <title>TakeNote App</title>
+        <meta name="description" content="TakeNote - Home">
+        <title>TakeNote - Home</title>
         <!-- styles -->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
     <body>
-        <nav>Home || Add || Image || Delete || Login || Register</nav>
-        <h1>Welcome to the TakeNote App!</h1>
 
-        <img src="{{ url_for('static', filename='logo.png')}}"/>
+        <nav class="main-menu">
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('get_notes') }}">Notes</a></li>
+            <li><a href="{{ url_for('new_note') }}">New Note</a></li>
+          </ul>
+        </nav>
 
-        <h2>PLEASE SIGN IN TO ENJOY TAKING NOTE</h2>
+        <div class="center">
+          <h1>Welcome to TakeNote!</h1>
+          <h2>Please log in at the top right to access your notes.</h2>
+        </div>
+        <div>
+          <img id="logo" src="{{ url_for('static', filename='logo.png')}}"/>
+        </div>
+
     </body>
 </html>
