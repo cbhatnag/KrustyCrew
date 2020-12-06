@@ -15,12 +15,18 @@
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('get_notes') }}">Notes</a></li>
             <li><a href="{{ url_for('new_note') }}">New Note</a></li>
+            {% if user %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Sign In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
           </ul>
         </nav>
 
         <div class="center">
           <h1>Welcome to TakeNote!</h1>
-          <h2>Please log in at the top right to access your notes.</h2>
+          <h2>Please log in at the top to access your notes.</h2>
         </div>
         <div>
           <img id="logo" src="{{ url_for('static', filename='logo.png')}}"/>
