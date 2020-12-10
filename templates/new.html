@@ -23,17 +23,21 @@
         </ul>
       </nav>
 
-        <h1>Welcome {{user}} to the 49er Notes App!</h1>
+      <h1>Welcome {{user}} to the TakeNote App!</h1>
+      <div>
+        <img id="logo1" src="{{ url_for('static', filename='logo.png')}}"/>
+      </div>
+      <br>
         {% if note %}
           <form action="{{ url_for('update_note', note_id=note.id) }}" method="post">
         {% else %}
-        <form action="new" method="post">
+          <form id="newNote" action="new" method="post">
           {% endif %}
-          <p><label>Title </label></p><p>
-          <input type="text" name="title" value="{% if note %}{{note.title}} {% endif %}"/></p>
+          <p><label>Title </label></p>
+          <p><input type="text" id="noteTitle" name="title" value="{% if note %}{{note.title}} {% endif %}"/></p>
           <p><label>Note </label></p>
           <p>
-            <textarea name="noteText"  rows="6" cols="0">
+            <textarea id="noteText" name="noteText"  rows="6" cols="0">
               {% if note %}
                 {{note.text}}
               {% else %}
@@ -43,9 +47,9 @@
           </p>
           <p>
             {% if note %}
-              <input type="submit" vlue="Update Note"/>
+              <input id="button" type="submit" value="Update Note"/>
             {% else %}
-              <input type="submit" value="Add Note"/>
+              <input id="button" type="submit" value="Add Note"/>
             {% endif %}
           </p>
         </form>

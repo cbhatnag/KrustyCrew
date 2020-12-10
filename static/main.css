@@ -3,9 +3,11 @@ body {
 }
 h1 {
   color: white;
+  text-align: center;
 }
 h2 {
   color: orange;
+  text-align: center;
 }
 .center {
   margin: auto;
@@ -25,6 +27,12 @@ h2 {
   top: 50%;
   transform: translate(-60%, 40%);
 }
+#logo1 {
+  width: 10%;
+  height: 10%;
+  margin-left: 640px;
+}
+
 ul, li{
   list-style: none;
   margin: 0;
@@ -70,17 +78,54 @@ ul, li{
 table {
   background-color: #ffffcc;
   border: solid 2px  #ffffff;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th {
-    font-weight: bold;
-    text-align: center;
+  font-weight: bold;
+  text-align: center;
+  background-color: lightblue;
+  padding: 10px 40px;
+  font-size: 18px;
 }
 
 td {
-    text-align: center;
+  text-align: center;
+  padding: 10px 40px;
 }
 
 .comments {
   background-color: white;
 }
+
+#newNote {
+  background-color: lightblue;
+  text-align:center;
+  padding: 10px;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+label {
+  text-align: center;
+  font-weight: bold;
+  background-color: #ffffcc ;
+  padding: 5px 200px;
+  font-size: 1em;
+}
+
+#noteTitle {
+  margin: 0px auto;
+  width: 72%;
+  padding-top:12px;
+}
+
+textarea {
+  padding: 10px 130px;
+}
+
+#button {
+  padding: 10px;
+  background-color: lightpink;
+}
+

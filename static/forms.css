@@ -1,6 +1,7 @@
 form {
   background: white;
   width: 100%;
+  text-align: center;
 }
 
 .form-field {
@@ -18,21 +19,22 @@ form {
 .formwrapper {
   position: relative;
   background: white;
-  width: 350px;
+  width: 500px;
   box-shadow: 0 0 5px rgba(65, 67, 144, 0.1);
   padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 label {
-  font-size: .9em;
-  color: green;
+  font-size: 1em;
   margin-bottom: 3px;
   display: block;
-  font-weight: 300;
+  color: #0099ff;
 }
 
 input, textarea{
-  padding: 10px 13px;
+  padding: 10px 170px;
   margin-bottom: 15px;
   border-radius: 2px;
   border: 1px solid #d4d9e3;
@@ -51,7 +53,7 @@ input[type="text"]:hover,
 input[type="password"]:hover,
 textarea:hover,
 select:hover {
-  border-color: green;
+  border-color: #0099ff;
   background: lightyellow;
 }
 
@@ -64,20 +66,20 @@ textarea:focus {
 }
 
 input[type="submit"] {
-  background: green;
+  background: #0099ff;
   border: 0;
   color: white;
   border-radius: 2px;
-  margin-top: 15px;
+  padding: 10px 10px;
   font-weight: 400;
-  border: 1px solid green;
+  border: 1px solid #0099ff;
   transition: all .3s ease-out;
 }
 
 input[type="submit"]:hover {
   cursor: pointer;
   background: white;
-  color: green;
+  color: #0099ff;
 }
 
 .success-wrapper {

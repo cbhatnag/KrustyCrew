@@ -22,7 +22,9 @@
       </nav>
 
         <h1>Welcome {% if user %}{{user}}{% endif %}to the 49er Notes App!</h1>
-
+        <div>
+          <img id="logo1" src="{{ url_for('static', filename='logo.png')}}"/>
+        </div>
         <h2>Use this site to maintain and organize your notes.</h2>
         <div class="formwrapper">
             <h2 class="title">Login</h2>
