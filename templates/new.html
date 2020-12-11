@@ -23,7 +23,7 @@
         </ul>
       </nav>
 
-      <h1>Welcome {{user}} to the TakeNote App!</h1>
+      <h1>Welcome to the TakeNote App {{user}}!</h1>
       <div>
         <img id="logo1" src="{{ url_for('static', filename='logo.png')}}"/>
       </div>
@@ -39,9 +39,7 @@
           <p>
             <textarea id="noteText" name="noteText"  rows="6" cols="0">
               {% if note %}
-                {{note.text}}
-              {% else %}
-                Add your new note here ...
+              {{note.text}}
               {% endif %}
             </textarea>
           </p>
