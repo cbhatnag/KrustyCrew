@@ -108,7 +108,16 @@ td {
 }
 
 .comments {
-  background-color: white;
+  font-family: avenir;
+  text-align: center;
+  color: white;
+}
+
+.comments input{
+  width: 5%;
+  height: 1px;
+  line-height: 2px;
+
 }
 
 #newNote {

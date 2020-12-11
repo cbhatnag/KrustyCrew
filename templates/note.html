@@ -48,10 +48,10 @@
             <h2>Comments</h2>
             <ul>
             {% for comment in note.comments %}
-              <li>{{ comment.content }}</li>
+              <li>{{ comment.content }}</li><br>
               <form action="{{ url_for('delete_comment', note_id=note.id, comment_id=comment.id) }}" method="post">
-                <input type="submit" value="Delete">
-              </form>
+                <input type="submit" value="Delete" style="font-size:10px">
+              </form><br>
             {% endfor %}
             </ul>
           {% endif %}
