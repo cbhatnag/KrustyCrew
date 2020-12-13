@@ -15,24 +15,31 @@
           <ul>
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('get_notes') }}">Notes</a></li>
-            <li><a href="{{ url_for('new_note') }}">New Note</a></li>
+
             {% if user %}
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
-            <li><a href="{{ url_for('login') }}">Sign In</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+
             {% endif %}
           </ul>
         </nav>
 
         <div class="center">
+            <h1>Welcome to TakeNote {% if user %}{{user}}{% endif %}!</h1>
+            <h2>Use this site to maintain and organize your notes.</h2>
+
+            <img id="logo" src="{{ url_for('static', filename='logo.png')}}"/><br><br>
+
             {% if user %}
-            <h1>Welcome to TakeNote {{user}}!</h1>
+            <form action="{{ url_for('get_notes') }}" >
+                <input id="button" type="submit" value="View Notes">
+            </form>
             {% else %}
-            <h1>Welcome to TakeNote!</h1>
-            <h2>Please log in to access your notes.</h2>
+            <form action="{{ url_for('register') }}" >
+                <input id="button" type="submit" value="Sign Up Now">
+            </form>
             {% endif %}
-            <img id="logo" src="{{ url_for('static', filename='logo.png')}}"/>
         </div>
 
 

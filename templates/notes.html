@@ -14,17 +14,17 @@
         <ul>
           <li><a href="{{ url_for('index') }}">Home</a></li>
           <li><a href="{{ url_for('get_notes') }}">Notes</a></li>
-          <li><a href="{{ url_for('new_note') }}">New Note</a></li>
+
           {% if user %}
           <li><a href="{{ url_for('logout') }}">Logout</a></li>
           {% else %}
-          <li><a href="{{ url_for('login') }}">Sign In</a></li>
-          <li><a href="{{ url_for('register') }}">Register</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+
           {% endif %}
         </ul>
       </nav>
 
-        <h1>Welcome to the TakeNote App {{user}}!</h1>
+        <h1>Welcome to TakeNote {{user}}!</h1>
         <div>
           <img id="logo1" src="{{ url_for('static', filename='logo.png')}}"/>
         </div>
@@ -40,7 +40,7 @@
             <tr>
                 <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.title }}</a></td>
                 <td><a href="{{ url_for('get_note', note_id=note.id) }}">{{ note.date }}</td>
-                <td><a  href="{{ url_for('update_note', note_id=note.id) }}">Edit</a></td>
+                <td><a href="{{ url_for('update_note', note_id=note.id) }}">Edit</a></td>
                 <td>
                   <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
                     <input type="submit" value="Delete">
@@ -48,6 +48,10 @@
                 </td>
             </tr>
             {% endfor %}
-        </table>
+        </table><br>
+      <form action="{{ url_for('new_note') }}" >
+          <input id="button" type="submit" value="New Note">
+      </form>
+
     </body>
 </html>

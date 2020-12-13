@@ -15,33 +15,40 @@
         <ul>
           <li><a href="{{ url_for('index') }}">Home</a></li>
           <li><a href="{{ url_for('get_notes') }}">Notes</a></li>
-          <li><a href="{{ url_for('new_note') }}">New Note</a></li>
+
           {% if user %}
           <li><a href="{{ url_for('logout') }}">Logout</a></li>
           {% else %}
-          <li><a href="{{ url_for('login') }}">Sign In</a></li>
-          <li><a href="{{ url_for('register') }}">Register</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+
           {% endif %}
         </ul>
       </nav>
 
-        <h1>Welcome to the TakeNote App {{user}}!</h1>
+        <h1>Welcome to TakeNote {{user}}!</h1>
 
         <h2>Note details</h2>
+        <div id="noteDetails">
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Text</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>{{ note.title }}</td>
+                    <td>{{ note.text }}</td>
+                    <td>{{ note.date }}</td>
+                </tr>
 
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Text</th>
-                <th>Date</th>
-            </tr>
-            <tr>
-                <td>{{ note.title }}</td>
-                <td>{{ note.text }}</td>
-                <td>{{ note.date }}</td>
-            </tr>
-        </table>
-
+            </table><br>
+            <form action="{{ url_for('update_note', note_id=note.id) }}" >
+                <input id="button" type="submit" value="Edit">
+            </form>
+            <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
         <div class=comments>
         {% if note.comments %}
           {% if note.comments|length > 0 %}
