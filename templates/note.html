@@ -27,16 +27,14 @@
 
         <h1>Welcome to TakeNote {{user}}!</h1>
 
-        <h2>Note details</h2>
+        <h2 style="color: #00BFFF;">{{note.title}}</h2>
         <div id="noteDetails">
             <table>
                 <tr>
-                    <th>Title</th>
                     <th>Text</th>
                     <th>Date</th>
                 </tr>
                 <tr>
-                    <td>{{ note.title }}</td>
                     <td>{{ note.text }}</td>
                     <td>{{ note.date }}</td>
                 </tr>

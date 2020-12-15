@@ -22,7 +22,9 @@
       </nav>
         <h1>Welcome to TakeNote {% if user %}{{user}}{% endif %}!</h1>
         <div>
-          <img id="logo1" src="{{ url_for('static', filename='logo.png')}}"/>
+			<nav>
+				<a href="{{ url_for('index') }}"><img id="logo1" src="{{ url_for('static', filename='logo.png')}}" height="30" width="156" /></a>
+			</nav>
         </div>
         <h2>Use this site to maintain and organize your notes.</h2>
         <div class="formwrapper">

@@ -25,7 +25,9 @@
 
       <h1>Welcome to TakeNote {{user}}!</h1>
       <div>
-        <img id="logo1" src="{{ url_for('static', filename='logo.png')}}"/>
+        <nav>
+			<a href="{{ url_for('index') }}"><img id="logo1" src="{{ url_for('static', filename='logo.png')}}" height="30" width="156" /></a>
+		</nav>
       </div>
       <br>
         {% if note %}
