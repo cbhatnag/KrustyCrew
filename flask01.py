@@ -87,7 +87,7 @@ def update_note(note_id):
             note.text = text
             db.session.add(note)
             db.session.commit()
-            return redirect(url_for('get_notes'))
+            return redirect(url_for('get_note', note_id=note_id))
         else:
             my_note = db.session.query(Note).filter_by(id=note_id).one()
 
@@ -195,6 +195,7 @@ def update_comment(note_id, comment_id):
             return render_template("edit_comment.html", note=my_note, comment=my_comment, user=session['user'])
     else:
         return redirect(url_for('login'))
+
 
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
 app.config['SECRET_KEY'] = 'SE3155'

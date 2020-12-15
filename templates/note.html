@@ -54,12 +54,13 @@
             <ul>
             {% for comment in note.comments %}
               <li>{{ comment.content }}</li><br>
+                <form action="{{ url_for('update_comment', note_id=note.id, comment_id=comment.id) }}" method="get">
+                    <input type="submit" value="Edit" style="font-size:10px">
+                </form>
               <form action="{{ url_for('delete_comment', note_id=note.id, comment_id=comment.id) }}" method="post">
                 <input type="submit" value="Delete" style="font-size:10px">
               </form><br>
-              <form action="{{ url_for('update_comment', note_id=note.id, comment_id=comment.id) }}" method="get">
-                <input type="submit" value="Edit" style="font-size:10px">
-              </form><br>
+
             {% endfor %}
             </ul>
           {% endif %}

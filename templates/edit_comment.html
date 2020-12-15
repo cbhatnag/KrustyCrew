@@ -32,7 +32,14 @@
       <br>
         <form action="{{ url_for('update_comment', note_id=note.id, comment_id=comment.id) }}" method="post">
           <p><label>Comment </label></p>
-          <p><input type="text" id="commentText" name="comment" value="{% if note %}{{comment.content}}{% endif %}"/></p>
+            <p>
+                <textarea id="commentText" name="comment" rows="6" cols="0">
+                    {% if note %}
+                    {{comment.content}}
+                    {% endif %}
+                </textarea>
+            </p>
+
           <p><input id="button" type="submit" value="Update Comment"/>
         </form>
     </body>
