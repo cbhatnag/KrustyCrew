@@ -32,20 +32,30 @@
             <table>
                 <tr>
                     <th>Text</th>
+                    <th>Rating</th>
                     <th>Date</th>
                 </tr>
                 <tr>
                     <td>{{ note.text }}</td>
+                    <td></td>
                     <td>{{ note.date }}</td>
                 </tr>
 
             </table><br>
-            <form action="{{ url_for('update_note', note_id=note.id) }}" >
-                <input id="button" type="submit" value="Edit">
-            </form>
-            <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
-                <input type="submit" value="Delete">
-            </form>
+            <table>
+              <tr>
+                <td id="edit">
+                  <form action="{{ url_for('update_note', note_id=note.id) }}" >
+                      <input type="submit" value="Edit">
+                  </form>
+                </td>
+                <td id="delete">
+                  <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                      <input type="submit" value="Delete">
+                  </form>
+                </td>
+              </tr>
+            </table>
         </div>
         <div class=comments>
         {% if note.comments %}

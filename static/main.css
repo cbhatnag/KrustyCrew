@@ -196,7 +196,7 @@ input[type="submit"] {
 }
 
 #noteDetails input{
-  width: 10%;
+  width: 100%;
   height: 2px;
   line-height: 2px;
 }
@@ -209,4 +209,8 @@ input[type="submit"] {
   border-radius: 2px;
   display: block;
   font-family: 'Poppins', sans-serif;
+}
+
+#edit #delete {
+  padding: 20px;
 }
