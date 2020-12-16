@@ -196,6 +196,19 @@ def update_comment(note_id, comment_id):
     else:
         return redirect(url_for('login'))
 
+@app.route('/notes/<note_id>/rate', methods=['POST'])
+def rate_note(note_id):
+    if session.get('user'):
+        if request.method == 'POST':
+            rate = request.form['rating']
+            note = db.session.query(Note).filter_by(id=note_id).one()
+            note.rate = rate
+            db.session.add(note)
+            db.session.commit()
+            return redirect(url_for('get_note', note_id=note_id))
+    else:
+        return redirect(url_for('login'))
+
 
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
 app.config['SECRET_KEY'] = 'SE3155'

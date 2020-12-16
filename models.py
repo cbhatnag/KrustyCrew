@@ -8,6 +8,7 @@ class Note(db.Model):
     date = db.Column("date", db.String(50))
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     comments = db.relationship("Comment", backref="note", cascade="all, delete-orphan", lazy=True)
+    rate = db.Column("rate", db.Integer)
 
     def __init__(self, title, text, date, user_id):
         self.title = title
@@ -44,3 +45,7 @@ class Comment(db.Model):
         self.content = content
         self.note_id = note_id
         self.user_id = user_id
+        
+class Rate(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_posted = db.Column(db.DateTime, nullable=False)

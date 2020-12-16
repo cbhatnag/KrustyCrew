@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField
-from wtforms.validators import Length, Regexp, DataRequired, EqualTo, Email
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField, IntegerField
+from wtforms.validators import Length, Regexp, DataRequired, EqualTo, Email, NumberRange
 from wtforms import ValidationError
 from models import User
 from database import db
@@ -57,3 +57,11 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Comment',validators=[Length(min=1)])
 
     submit = SubmitField('Add Comment')
+
+class RateForm(FlaskForm):
+    class Meta:
+        crsf = False
+
+    rate = IntegerField('Rating', validators=[NumberRange(min=1, max=5)])
+
+    submit = SubmitField('Submit')
