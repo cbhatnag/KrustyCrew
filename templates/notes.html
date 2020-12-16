@@ -35,8 +35,8 @@
 
         <table id="tableLabel">
             <tr>
-                <th>Title</th>
-                <th>Date</th>
+                <th><a href="{{ url_for('sort_notes_title') }}">Title</th>
+                <th><a href="{{ url_for('sort_notes_date') }}">Date</th>
             </tr>
             {% for note in notes %}
             <tr>

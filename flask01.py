@@ -29,12 +29,15 @@ with app.app_context():
 # @app.route is a decorator. It gives the function "index" special powers.
 # In this case it makes it so anyone going to "your-url/" makes this function
 # get called. What it returns is what is shown as the web page
+
+
 @app.route('/')
 @app.route('/index')
 def index():
     if session.get('user'):
         return render_template("index.html", user=session['user'])
     return render_template('index.html')
+
 
 @app.route('/notes')
 def get_notes():
@@ -56,6 +59,7 @@ def get_note(note_id):
     else:
         return render_template('login')
 
+
 @app.route('/notes/new', methods=['GET', 'POST'])
 def new_note():
 
@@ -76,6 +80,7 @@ def new_note():
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/notes/edit/<note_id>', methods=['GET', 'POST'])
 def update_note(note_id):
     if session.get('user'):
@@ -87,13 +92,14 @@ def update_note(note_id):
             note.text = text
             db.session.add(note)
             db.session.commit()
-            return redirect(url_for('get_note', note_id=note_id))
+            return redirect(url_for('get_notes', note_id=note_id))
         else:
             my_note = db.session.query(Note).filter_by(id=note_id).one()
 
             return render_template('new.html', note=my_note, user=session['user'])
     else:
         return redirect(url_for('login'))
+
 
 @app.route('/notes/delete/<note_id>', methods=['POST'])
 def delete_note(note_id):
@@ -104,6 +110,7 @@ def delete_note(note_id):
         return redirect(url_for('get_notes'))
     else:
         return redirect(url_for('login'))
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -121,6 +128,7 @@ def register():
 
         return redirect(url_for('get_notes'))
     return render_template('register.html', form=form)
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -145,11 +153,13 @@ def login():
         # form did not validate or GET request
         return render_template("login.html", form=login_form)
 
+
 @app.route('/logout')
 def logout():
     if session.get('user'):
         session.clear()
     return redirect(url_for('index'))
+
 
 @app.route('/notes/<note_id>/comment', methods=['POST'])
 def new_comment(note_id):
@@ -168,6 +178,7 @@ def new_comment(note_id):
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/notes/delete/<note_id>/<comment_id>', methods=['POST'])
 def delete_comment(note_id, comment_id):
     if session.get('user'):
@@ -177,6 +188,7 @@ def delete_comment(note_id, comment_id):
         return redirect(url_for('get_note', note_id=note_id))
     else:
         return redirect(url_for('login'))
+
 
 @app.route('/notes/edit/<note_id>/<comment_id>', methods=['GET', 'POST'])
 def update_comment(note_id, comment_id):
@@ -196,6 +208,7 @@ def update_comment(note_id, comment_id):
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/notes/<note_id>/rate', methods=['POST'])
 def rate_note(note_id):
     if session.get('user'):
@@ -206,6 +219,24 @@ def rate_note(note_id):
             db.session.add(note)
             db.session.commit()
             return redirect(url_for('get_note', note_id=note_id))
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/notes/sort/title')
+def sort_notes_title():
+    if session.get('user'):
+        my_notes = db.session.query(Note).filter_by(user_id=session['user_id']).order_by(Note.title).all()
+        return render_template('notes.html', notes=my_notes, user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/notes/sort/date')
+def sort_notes_date():
+    if session.get('user'):
+        my_notes = db.session.query(Note).filter_by(user_id=session['user_id']).order_by(Note.date).all()
+        return render_template('notes.html', notes=my_notes, user=session['user'])
     else:
         return redirect(url_for('login'))
 

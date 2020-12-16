@@ -82,30 +82,22 @@
                 </tr>
 
             </table><br>
-            <table>
-              <tr>
-                <td id="edit">
-                  <form action="{{ url_for('update_note', note_id=note.id) }}" >
-                      <input type="submit" value="Edit">
-                  </form>
-                </td>
-                <td id="delete">
-                  <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
-                      <input type="submit" value="Delete">
-                  </form>
-                </td>
-              </tr>
-            </table>
-        </div>
-
+            <form action="{{ url_for('update_note', note_id=note.id) }}" >
+                <input  type="submit" value="Edit" style="width: 100px">
+            </form>
+            <form action="{{ url_for('delete_note', note_id=note.id) }}" method="post">
+                <input onclick="return confirm('Are you sure you want to delete this note?');" type="submit" value="Delete" style="width: 100px">
+            </form>
+        </div><br>
+        <div class="formwrapper">
         <form action="{{ url_for('rate_note', note_id=note.id) }}" method="post">
             <div>
-                <h2 class="title">Rate this Note</h2>
+                <h2 class="title">Priority Rating</h2>
                 <input type="number" name=rating min="1" max="5">
                 <input type="submit" value="Rate">
             </div>
         </form>
-
+        </div>
         <div class=comments>
         {% if note.comments %}
           {% if note.comments|length > 0 %}
@@ -117,7 +109,7 @@
                     <input type="submit" value="Edit" style="font-size:10px">
                 </form>
               <form action="{{ url_for('delete_comment', note_id=note.id, comment_id=comment.id) }}" method="post">
-                <input type="submit" value="Delete" style="font-size:10px">
+                <input type="submit" value="Delete" style="font-size:10px" onclick="return confirm('Are you sure you want to delete this comment?');">
               </form><br>
 
             {% endfor %}
