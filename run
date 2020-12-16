@@ -1,0 +1,3 @@
+#!/bin/bash
+export FLASK_APP=flask01.py
+flask run
